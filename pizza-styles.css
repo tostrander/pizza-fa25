@@ -14,14 +14,14 @@ body {
     font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
-#main {
+main {
     background-color: white;
     width: 70%;
     margin: 0 auto 1rem auto;
     padding: 0 1rem 2rem 1rem;
 }
 
-.main-button {
+#contact-button {
     border: none;
     background-color: darkgreen;
     border-color: darkgreen;
@@ -54,7 +54,7 @@ header h1 {
     margin: 0;
 }
 
-#tag-line {
+#tagline {
     font-size: 1.25rem;
     font-weight: 300;
 }
