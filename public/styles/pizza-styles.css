@@ -65,7 +65,7 @@ input[type="text"], input[type="email"], textarea, select {
     width: 100%;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    margin: 0rem 0rem 1rem 0rem;
+    margin: 0rem 0rem 0rem 0rem;
     padding: .75rem;
 }
 
@@ -91,6 +91,12 @@ fieldset {
 label {
     display: block;
     padding-bottom: .5rem;
+    margin-top: 0.5em;
+}
+
+.error {
+    color: darkred;
+    display: none;
 }
 
 /* Mobile styles */
