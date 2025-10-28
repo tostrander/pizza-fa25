@@ -34,11 +34,6 @@ app.get('/contact-us', (req, res) => {
     res.render('contact');
 });
 
-// Define a "confirmation" route
-app.get('/confirm', (req, res) => {
-    res.render('confirmation');
-});
-
 // Define an "admin" route
 app.get('/admin', (req, res) => {
 
@@ -53,23 +48,15 @@ app.post('/submit-order', (req, res) => {
     //console.log(req.body);
 
     // Create a JSON object to store the data
-    const order = {
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        method: req.body.method,
-        toppings: req.body.toppings,
-        size: req.body.size,
-        comment: req.body.comment,
-        timestamp: new Date()
-      };
+    const order = req.body;
+    order.timestamp = new Date()
 
-      // Add order to array
-      orders.push(order);
-      console.log(orders);
+    // Add order to array
+    orders.push(order);
+    console.log(orders);
 
-      // Send user to confirmation page
-      res.render('confirmation', { order });
+    // Send user to confirmation page
+    res.render('confirmation', { order });
 });
 
 // Start the server and make it listen on the port 
