@@ -2,6 +2,7 @@
 import express from 'express';
 import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
+import { validateForm } from './validation.js';
 
 // Load the variables from .env file
 dotenv.config();
@@ -77,12 +78,21 @@ app.post('/submit-order', async(req, res) => {
 
     // Create a JSON object to store the data
     const order = req.body;
+
+    // Server-side validation
+    const valid = validateForm(order);
+    if (!valid.isValid) {
+        // res.send(valid.errors);
+        res.render('home', {errors: valid.errors});
+    }
+
+    // Add a timestamp to the order
     order.timestamp = new Date()
 
     // Write a query to insert order into DB
     const sql = "INSERT INTO orders (fname, lname, email, size, method, toppings, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    console.log(order);
+    // console.log(order);
     // Create array of parameters for each placeholder
     const params = [
         order.fname,
